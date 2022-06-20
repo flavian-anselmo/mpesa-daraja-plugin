@@ -7,8 +7,16 @@ Future<void> main() async {
     consumerKey: 'Dm4oJgziMyOT7WTmJzQfEZS6jjzg1Frd',
     consumerSecret: 'RGRvsUGkO4jc3NuW',
     passKey: 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
-    amount: 1.toString(),
-    businessShortCode: 174379.toString(),
   );
-  print(await stk.lipaNaMpesaStk());
+
+  await stk.lipaNaMpesaStk(
+    "174379",
+    1,
+    "254798071510",
+    "174379",
+    "254798071510",
+    "https://mydomain.com/path",
+    "accountReference",
+    "transactionDesc",
+  );
 }

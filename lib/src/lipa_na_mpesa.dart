@@ -10,20 +10,18 @@ class MpesaDaraja {
   late String consumerKey;
   late String consumerSecret;
   late String passKey;
-  late String businessShortCode;
-  late String amount;
+
 
   /// the keys are required fields
   MpesaDaraja({
     required this.consumerKey,
     required this.consumerSecret,
     required this.passKey,
-    required this.businessShortCode,
-    required this.amount,
+ 
   });
 
-  late String accessToken;
-  late String expiresIN;
+  late String _accessToken;
+  //late String _expiresIN;
 
   String _generateAuth() {
     /// authorization
@@ -55,8 +53,8 @@ class MpesaDaraja {
 
     if (response.statusCode == 200) {
       var jsonresponse = jsonDecode(response.body);
-      accessToken = jsonresponse["access_token"];
-      expiresIN = jsonresponse["expires_in"];
+      _accessToken = jsonresponse["access_token"];
+     // _expiresIN = jsonresponse["expires_in"];
       return await jsonresponse;
     } else {
       return throw Exception("Error::check internet Connection");
@@ -82,37 +80,46 @@ class MpesaDaraja {
     return tmstmp;
   }
 
-  String _generatePassword() {
+  String _generatePassword(String shortcode) {
     /// base64.encode(Shortcode+Passkey+Timestamp)
-    String till = businessShortCode;
+    String shortCode = shortcode;
     String timeStamp = _getTimeStamp();
-    String raw = till + passKey + timeStamp;
+    String raw = shortCode + passKey + timeStamp;
     final bytespswd = utf8.encode(raw);
     return base64Encode(bytespswd);
   }
 
-  Future<dynamic> lipaNaMpesaStk() async {
+  Future<dynamic> lipaNaMpesaStk(
+    String businessShortCode,
+    int amount,
+    String partyA,
+    String partyB,
+    String phoneNumber,
+    String callbackUrl,
+    String accountReference,
+    String transactionDesc,
+  ) async {
     await _validateTimeBoundedAceessToken();
-    String password = _generatePassword();
+    String password = _generatePassword(businessShortCode);
     String timestamp = _getTimeStamp();
     var body = {
       "BusinessShortCode": businessShortCode,
       "Password": password,
       "Timestamp": timestamp,
       "TransactionType": "CustomerPayBillOnline",
-      "Amount": amount,
-      "PartyA": "254798071510",
+      "Amount": amount.toString(),
+      "PartyA": partyA,
       "PartyB": businessShortCode,
-      "PhoneNumber": "254798071510",
-      "CallBackURL": "https://mydomain.com/path",
-      "AccountReference": "CompanyXLTD",
-      "TransactionDesc": "Payment of X"
+      "PhoneNumber": phoneNumber,
+      "CallBackURL": callbackUrl,
+      "AccountReference": accountReference,
+      "TransactionDesc": transactionDesc,
     };
 
     var response = await http.post(
       Uri.parse(ENDPOINT),
       headers: {
-        "Authorization": "Bearer $accessToken",
+        "Authorization": "Bearer $_accessToken",
         "Content-Type": "application/json",
       },
       body: jsonEncode(body),
