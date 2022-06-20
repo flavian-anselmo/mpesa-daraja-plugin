@@ -5,8 +5,7 @@ import 'package:mpesadaraja/src/endpoints.dart';
 
 class MpesaDaraja {
   // ignore: non_constant_identifier_names
-  String ENDPOINT =
-      "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest";
+
   late String consumerKey;
   late String consumerSecret;
   late String passKey;
@@ -117,7 +116,7 @@ class MpesaDaraja {
     };
 
     var response = await http.post(
-      Uri.parse(ENDPOINT),
+      Uri.parse(Endpoint.ENDPOINT),
       headers: {
         "Authorization": "Bearer $_accessToken",
         "Content-Type": "application/json",
