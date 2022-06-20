@@ -1,6 +1,6 @@
 name: mpesadaraja
 description: M-pesa daraja api library for flutter and dart.
-version: 0.0.1
+version: 0.1.1
 homepage: https://github.com/flavian-anselmo/mpesa-daraja-plugin-flutter-dart
 
 environment:
