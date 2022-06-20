@@ -34,6 +34,11 @@ class MpesaDaraja {
     ///    client_credentials grant_type is supported (under query parameters)
     //String consumerKey = "Dm4oJgziMyOT7WTmJzQfEZS6jjzg1Frd";
     //String consumerSecret = "RGRvsUGkO4jc3NuW";
+
+    ///
+    /// MTc0Mzc5K2JmYjI3OWY5YWE5YmRiY2YxNThlOTdkZDcxYTQ2N2NkMmUwYzg5MzA1OWIxMGY3OGU2YjcyYWRhMWVkMmM5MTkrMjAyMjA2MjAyMzUzMjY=
+    /// MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMjIwNjIxMDAwOTQ1
+
     String b64secret = base64Url.encode(
       ("$consumerKey:$consumerSecret").codeUnits,
     );
@@ -59,61 +64,36 @@ class MpesaDaraja {
   }
 
   String _getTimeStamp() {
-    // get the current time stamp
-
-    ///
-    /// yy mm dd hh mm ss
-    /// 20220620105547
-    /// 20220620120157000
-
-    ///2022-06-20 11:53:39.000
-    ///20220620115950000
-
-    var timeList = [];
     DateTime now = DateTime.now();
-    DateTime timestamp = DateTime(
-      now.year,
-      now.month,
-      now.day,
-      now.hour,
-      now.minute,
-      now.second,
-    );
-    String formarttime = timestamp.toString();
-    for (int i = 0; i < formarttime.length; i++) {
-      var char = formarttime[i];
-      if (char != "-" && char != ":" && char != "." && char != " ") {
-        timeList.add(char);
-      } else {}
-    }
-    String tStamp = timeList.join();
+    final tmstmp =
+        "${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}";
+    // String formarttime = timestamp.toString();
+    // for (int i = 0; i < formarttime.length; i++) {
+    //   var char = formarttime[i];
+    //   if (char != "-" && char != ":" && char != "." && char != " ") {
+    //     timeList.add(char);
+    //   } else {}
+    // }
+    // String tStamp = timeList.join();
 
-    /// remove the last three digits
-    tStamp = tStamp.substring(0, tStamp.length - 3);
-    return tStamp;
+    // /// remove the last three digits
+    // tStamp = tStamp.substring(0, tStamp.length - 3);
+
+    return tmstmp;
   }
 
   String _generatePassword() {
     /// base64.encode(Shortcode+Passkey+Timestamp)
     String till = businessShortCode;
     String timeStamp = _getTimeStamp();
-
-    String rawPassword = "$till+$passKey+$timeStamp";
-
-    final pswdBytes = utf8.encode(rawPassword);
-    String password = base64.encode(pswdBytes);
-
-    /// remove the equal sign
-    ///
-    password = password.substring(0, password.length - 1);
-    print(password);
-    return password;
+    String raw = till + passKey + timeStamp;
+    final bytespswd = utf8.encode(raw);
+    return base64Encode(bytespswd);
   }
 
   Future<dynamic> lipaNaMpesaStk() async {
     await _validateTimeBoundedAceessToken();
     String password = _generatePassword();
-
     String timestamp = _getTimeStamp();
     var body = {
       "BusinessShortCode": businessShortCode,
