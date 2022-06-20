@@ -10,31 +10,67 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
+# mpesa-daraja-plugin-flutter-dart
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+dart wrapper for mpesa daraja api by safaricom 
+
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
+1. [Done]Lipa na mpesa [x]
+2. [inprogress] C2BSIMULATE
+3. [inprogress] B2B
+4. [inprogress] C2B
+5. [inprogress] B2C
+6. [inprogress] TRANSACTION STATUS
+7. [inprogress] ACCOUNT BALANCE
+8. [inprogress] REVERSAL
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+You Will need a few things from Safaricom before development.
+
+1. Consumer Key
+2. Consumer Secret
+3. Test Credentials for Development/Sanbox environment
+- Login or Register as a Safaricom developer here if you haven't.
+- Add a new App here
+- You will be issued with a Consumer Key and Consumer Secret. You will use these to initiate an Mpesa Instance.
+- Obtain Test Credentials here.
+- The Test Credentials Obtained Are only valid in Sandbox/Development environment. Take note of them.
+- To run in Production Environment you will need real Credentials.
+- To go Live and be issued with real credentials,please refer to this guide
+
+4. Add dependancy in pubspec.yaml
+
+
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+Future<void> main() async {
+  final stk = MpesaDaraja(
+    consumerKey: 'Dm4oJgziMyOT7WTmJzQfEZS6jjzg1Frd',
+    consumerSecret: 'RGRvsUGkO4jc3NuW',
+    passKey: 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
+  );
+
+  await stk.lipaNaMpesaStk(
+    "174379",
+    1,
+    "254798071520",
+    "174379",
+    "254798071520",
+    "https://mydomain.com/path",
+    "accountReference",
+    "transactionDesc",
+  );
+}
+
 ```
 
-## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
-# mpesa-daraja-plugin-flutter-dart
+
+## Demo
+-  coming soon ....
+
+
