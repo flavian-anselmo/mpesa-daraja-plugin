@@ -32,34 +32,66 @@ You Will need a few things from Safaricom before development.
 1. Consumer Key
 2. Consumer Secret
 3. Test Credentials for Development/Sanbox environment
-- Login or Register as a Safaricom developer here if you haven't.
-- Add a new App here
-- You will be issued with a Consumer Key and Consumer Secret. You will use these to initiate an Mpesa Instance.
-- Obtain Test Credentials here.
-- The Test Credentials Obtained Are only valid in Sandbox/Development environment. Take note of them.
-- To run in Production Environment you will need real Credentials.
-- To go Live and be issued with real credentials,please refer to this guide
+  - Login or Register as a Safaricom developer here if you haven't.
+  - Add a new App [here](https://developer.safaricom.co.ke/MyApps)
+  - You will be issued with a ``Consumer Key`` and ``Consumer Secret``. You will use these to initiate an Mpesa Instance.
+  - Obtain Test Credentials [here](https://developer.safaricom.co.ke/TestCredentials).
+  - The Test Credentials Obtained Are only valid in Sandbox/Development environment. Take note of them.
+  - To run in Production Environment you will need real Credentials.
+  - To go Live and be issued with real credentials,please refer to this guide
 
 4. Add dependancy in pubspec.yaml
+```dart
+dependencies:
+  mpesadaraja: ^0.1.2
+```  
 
 
 
 ## Lipa Na MPesa Online 
-1. creat [MpesaDaraja] object and pass the following parameters:
+1. creat ``MpesaDaraja`` object and pass the following parameters:
  ```dart 
   MpesaDaraja stkpush = MpesaDaraja(
     consumerKey:<>
     consumerSecret:<>
     passKey:<>
   )
+```
+or make it a ``final`` as shown below:
+
+```dart 
+  final  stkpush = MpesaDaraja(
+    consumerKey:<>
+    consumerSecret:<>
+    passKey:<>
+  )
+
 ```  
   1. cosumerKey:
   2. consumerSecret
   3. passKey 
   - The keys are generated when you create an app at [Daraja 2.0] website 
-    [Click here](https://developer.safaricom.co.ke/) to create your keys 
+    [Click here](https://developer.safaricom.co.ke/MyApps) to create your keys 
 
   - The keys are a secret, so be sure to use them as environment variables in production code 
+
+2. Use the object created to call ``lipaNaMpesaStk()`` function to initialize the process
+    -  if the function is inside anaother be sure to use a ``Future`` with ``await`` when caloing the function 
+    - pass the required parameters in the function as shwon below 
+```dart
+ await stk.lipaNaMpesaStk(
+    "174379",
+    1,
+    "254798071520",
+    "174379",
+    "254798071520",
+    "https://mydomain.com/path",
+    "accountReference",
+    "transactionDesc",
+  );
+
+```    
+
 
 
 
