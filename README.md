@@ -18,7 +18,7 @@ dart wrapper for mpesa daraja api by safaricom
 ## Features
 
 1. [Done]Lipa na mpesa [x]
-2. [inprogress] C2BSIMULATE
+2. [inprogress] C2B
 3. [inprogress] B2B
 4. [inprogress] C2B
 5. [inprogress] B2C
@@ -44,7 +44,24 @@ You Will need a few things from Safaricom before development.
 
 
 
-## Usage
+## Lipa Na MPesa Online 
+1. creat [MpesaDaraja] object and pass the following parameters:
+ ```dart 
+  MpesaDaraja stkpush = MpesaDaraja(
+    consumerKey:<>
+    consumerSecret:<>
+    passKey:<>
+  )
+```  
+  1. cosumerKey:
+  2. consumerSecret
+  3. passKey 
+  - The keys are generated when you create an app at [Daraja 2.0] website 
+    [Click here](https://developer.safaricom.co.ke/) to create your keys 
+
+  - The keys are a secret, so be sure to use them as environment variables in production code 
+
+
 
 ```dart
 Future<void> main() async {
