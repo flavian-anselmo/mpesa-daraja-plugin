@@ -80,18 +80,26 @@ or make it a ``final`` as shown below:
     - pass the required parameters in the function as shwon below 
 ```dart
  await stk.lipaNaMpesaStk(
-    "174379",
-    1,
-    "254798071520",
-    "174379",
-    "254798071520",
-    "https://mydomain.com/path",
-    "accountReference",
-    "transactionDesc",
+    <BusinnessShortCode>,
+    <Amount>,
+    <PartyA>,
+    <PartB>,
+    <PhoneNumber>,
+    <CallBackUrl>,
+    <AccountReference>,
+    <TransactionDescription>,
   );
 
 ```    
-
+#### Parameters passed in lipaNaMpesaStk() function
+``BusinessShortCode``
+``Amount``
+``PartyA``
+``PartyB``
+``PhoneNUmber``
+``CallBackUrl``
+``AccountReference``
+``TransactionDescription``
 
 
 
