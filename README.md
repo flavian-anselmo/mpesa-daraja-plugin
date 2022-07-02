@@ -92,14 +92,14 @@ or make it a ``final`` as shown below:
 
 ```    
 #### Parameters passed in lipaNaMpesaStk() function
-``BusinessShortCode``
-``Amount``
-``PartyA``
-``PartyB``
-``PhoneNUmber``
-``CallBackUrl``
-``AccountReference``
-``TransactionDescription``
+1. ``BusinessShortCode``
+2. ``Amount``
+3. ``PartyA``
+4. ``PartyB``
+5. ``PhoneNUmber``
+6. ``CallBackUrl``
+7. ``AccountReference``
+8. ``TransactionDescription``
 
 
 
