@@ -104,11 +104,12 @@ or make it a ``final`` as shown below:
 8. ``TransactionDescription``: This is any additional information/comment that can be sent along with the request from your system. Maximum of 13 Characters.
 
 
+#### N/B: Do not copy my demo keys below they wont work 
 
 ```dart
 Future<void> main() async {
   final stk = MpesaDaraja(
-    consumerKey: 'Dm4oJgziMyOT7WTmJzQfEZS6jjzg1Frd',
+    consumerKey: 'Dm4oJgziMyOT7WTmJzQfEZS6jjzg1Fkd',
     consumerSecret: 'RGRvsUGkO4jc3NuW',
     passKey: 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
   );
@@ -126,6 +127,7 @@ Future<void> main() async {
 }
 
 ```
+
 
 
 
