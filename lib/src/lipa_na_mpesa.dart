@@ -46,7 +46,7 @@ class MpesaDaraja {
   Future<dynamic> _validateTimeBoundedAceessToken() async {
     String b64secret = _generateAuth();
     var response = await http.get(
-      Uri.parse(Endpoint.AUTHORIZATION),
+      Uri.parse(Endpoint.authorization),
       headers: {"Authorization": "Basic $b64secret"},
     );
 
@@ -116,7 +116,7 @@ class MpesaDaraja {
     };
 
     var response = await http.post(
-      Uri.parse(Endpoint.ENDPOINT),
+      Uri.parse(Endpoint.mpesaExpresSandbox),
       headers: {
         "Authorization": "Bearer $_accessToken",
         "Content-Type": "application/json",

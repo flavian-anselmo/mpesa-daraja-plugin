@@ -92,14 +92,16 @@ or make it a ``final`` as shown below:
 
 ```    
 #### Parameters passed in lipaNaMpesaStk() function
-1. ``BusinessShortCode``
-2. ``Amount``
-3. ``PartyA``
-4. ``PartyB``
-5. ``PhoneNUmber``
-6. ``CallBackUrl``
-7. ``AccountReference``
-8. ``TransactionDescription``
+1. ``BusinessShortCode``: This is organizations shortcode (Paybill or Buygoods - A 5 to 7 digit account number) used to       identify an organization and receive the transaction.
+
+2. ``Amount``: This is the Amount transacted normaly a numeric value. Money that customer pays to the Shorcode. Only whole numbers are supported.
+
+3. ``PartyA``: The phone number sending money. The parameter expected is a Valid Safaricom Mobile Number that is M-Pesa registered in the format 2547XXXXXXXX
+4. ``PartyB``: The organization receiving the funds. The parameter expected is a 5 to 7 digit as defined on the Shortcode description above. This can be the same as BusinessShortCode value above.
+5. ``PhoneNUmber``: The Mobile Number to receive the STK Pin Prompt. This number can be the same as PartyA value above.
+6. ``CallBackUrl``:  A CallBack URL is a valid secure URL that is used to receive notifications from M-Pesa API. It is the endpoint to which the results will be sent by M-Pesa A   
+7. ``AccountReference``: Account Reference: This is an Alpha-Numeric parameter that is defined by your system as an Identifier of the transaction for CustomerPayBillOnline transaction type. Along with the business name, this value is also displayed to the customer in the STK Pin Prompt message. Maximum of 12 characters.
+8. ``TransactionDescription``: This is any additional information/comment that can be sent along with the request from your system. Maximum of 13 Characters.
 
 
 
