@@ -1,6 +1,6 @@
 name: mpesadaraja
 description: M-pesa daraja api library for flutter and dart. M-Pesa is a mobile phone-based money transfer.
-version: 0.1.4
+version: 0.1.5
 homepage: https://github.com/flavian-anselmo/mpesa-daraja-plugin-flutter-dart
 
 environment:
