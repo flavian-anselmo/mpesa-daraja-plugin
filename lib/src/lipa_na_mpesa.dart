@@ -7,13 +7,11 @@ class MpesaDaraja {
   late String consumerSecret;
   late String passKey;
 
-
   /// the keys are required fields
   MpesaDaraja({
     required this.consumerKey,
     required this.consumerSecret,
     required this.passKey,
- 
   });
 
   late String _accessToken;
@@ -55,7 +53,7 @@ class MpesaDaraja {
       var jsonresponse = jsonDecode(response.body);
       //pick the access key to be used in other requets
       _accessToken = jsonresponse["access_token"];
-     // _expiresIN = jsonresponse["expires_in"];
+      // _expiresIN = jsonresponse["expires_in"];
       return await jsonresponse;
     } else {
       return throw Exception("Error");
@@ -80,12 +78,12 @@ class MpesaDaraja {
      * the password is combination btwn the business short code, passkey and timestamp 
      * 
      */
-    String shortCode = shortcode; // busimess short code 
+    String shortCode = shortcode; // busimess short code
     String timeStamp = _getTimeStamp();
-    //before encoding 
+    //before encoding
     String raw = shortCode + passKey + timeStamp;
     final bytespswd = utf8.encode(raw);
-    //base64 encoded password 
+    //base64 encoded password
     return base64Encode(bytespswd);
   }
 
