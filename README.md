@@ -43,7 +43,7 @@ You Will need a few things from Safaricom before development.
 4. Add dependancy in pubspec.yaml
 ```dart
 dependencies:
-  mpesadaraja: ^0.1.2
+  mpesadaraja: ^0.1.3
 ```  
 
 
