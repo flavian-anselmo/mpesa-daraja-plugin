@@ -1,11 +1,8 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:mpesadaraja/src/endpoints.dart';
 
 class MpesaDaraja {
-  // ignore: non_constant_identifier_names
-
   late String consumerKey;
   late String consumerSecret;
   late String passKey;
@@ -44,6 +41,10 @@ class MpesaDaraja {
   }
 
   Future<dynamic> _validateTimeBoundedAceessToken() async {
+    /***
+     * the access key will be used to make requests when making a stk push 
+     * 
+     */
     String b64secret = _generateAuth();
     var response = await http.get(
       Uri.parse(Endpoint.authorization),
@@ -52,39 +53,39 @@ class MpesaDaraja {
 
     if (response.statusCode == 200) {
       var jsonresponse = jsonDecode(response.body);
+      //pick the access key to be used in other requets
       _accessToken = jsonresponse["access_token"];
      // _expiresIN = jsonresponse["expires_in"];
       return await jsonresponse;
     } else {
-      return throw Exception("Error::check internet Connection");
+      return throw Exception("Error");
     }
   }
 
   String _getTimeStamp() {
+    /**
+     * timestamp is the ime the transaction is taking place 
+     * The time stamp is usually in a particular order yyyymmddhhmmss
+     * 
+     */
     DateTime now = DateTime.now();
     final tmstmp =
         "${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}";
-    // String formarttime = timestamp.toString();
-    // for (int i = 0; i < formarttime.length; i++) {
-    //   var char = formarttime[i];
-    //   if (char != "-" && char != ":" && char != "." && char != " ") {
-    //     timeList.add(char);
-    //   } else {}
-    // }
-    // String tStamp = timeList.join();
-
-    // /// remove the last three digits
-    // tStamp = tStamp.substring(0, tStamp.length - 3);
-
     return tmstmp;
   }
 
   String _generatePassword(String shortcode) {
     /// base64.encode(Shortcode+Passkey+Timestamp)
-    String shortCode = shortcode;
+    /***
+     * the password is combination btwn the business short code, passkey and timestamp 
+     * 
+     */
+    String shortCode = shortcode; // busimess short code 
     String timeStamp = _getTimeStamp();
+    //before encoding 
     String raw = shortCode + passKey + timeStamp;
     final bytespswd = utf8.encode(raw);
+    //base64 encoded password 
     return base64Encode(bytespswd);
   }
 

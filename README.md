@@ -12,12 +12,12 @@ and the Flutter guide for
 -->
 # mpesa-daraja-plugin-flutter-dart
 
-dart wrapper for mpesa daraja api by safaricom 
+dart wrapper for mpesa daraja api by safaricom. M-Pesa is a mobile phone-based money transfer, financing and microfinancing service, launched in 2007 by Vodafone for Safaricom and Vodacom the largest mobile network operators in Kenya and Tanzania.
 
 
 ## Features
 
-1. [Done]Lipa na mpesa [x]
+1. [+]Lipa na mpesa
 2. [inprogress] C2B
 3. [inprogress] B2B
 4. [inprogress] C2B
@@ -49,7 +49,11 @@ dependencies:
 
 
 ## Lipa Na MPesa Online 
-1. creat ``MpesaDaraja`` object and pass the following parameters:
+LIPA NA M-PESA ONLINE  also known as ``M-PESA express`` ``(STK Push)`` is a Merchant/Business initiated ``C2B`` (Customer to Business) Payment. This process it takes as described in the detailed sequence diagram below is:
+
+Once you, our  merchant integrates to the API, you will be able to send a payment prompt on the customers phone (Popularly known as STK Push Prompt) to your customer's M-PESA registered phone number requesting them to enter their M-PESA pin to authorize and complete a payment.
+
+1. create ``MpesaDaraja`` object and pass the following parameters:
  ```dart 
   MpesaDaraja stkpush = MpesaDaraja(
     consumerKey:<>
@@ -104,7 +108,7 @@ or make it a ``final`` as shown below:
 8. ``TransactionDescription``: This is any additional information/comment that can be sent along with the request from your system. Maximum of 13 Characters.
 
 
-#### N/B: Do not copy my demo keys below they wont work 
+#### N/B: Do not use  my demo keys below since they will not work.  
 
 ```dart
 Future<void> main() async {
@@ -128,6 +132,11 @@ Future<void> main() async {
 
 ```
 
+### Contributers
+
+1. [Anselmo.Jr](https://github.com/flavian-anselmo)
+2. [Joel](https://github.com/JoelKanyi)
+3. [sav4ner](https://github.com/sav4ner)
 
 
 
