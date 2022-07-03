@@ -1,6 +1,6 @@
 name: mpesadaraja
 description: M-pesa daraja api library for flutter and dart. M-Pesa is a mobile phone-based money transfer, financing and microfinancing service, launched in 2007 by Vodafone for Safaricom and Vodacom the largest mobile network operators in Kenya and Tanzania.
-version: 0.1.2
+version: 0.1.3
 homepage: https://github.com/flavian-anselmo/mpesa-daraja-plugin-flutter-dart
 
 environment:
